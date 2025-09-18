@@ -32,7 +32,7 @@
       remote_src: yes
 
   - name: Copy file 
-    ansible.builtin.template:
+    ansible.builtin.templates:
       src: expense.conf.j2
       dest: /etc/nginx/default.d/expense.conf
   
