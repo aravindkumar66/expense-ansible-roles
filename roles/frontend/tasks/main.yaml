@@ -12,8 +12,8 @@
 
   - name: import tasks from common role
     ansible.builtin.import_role:
-    name: common
-    tasks_from: /tasks/main.yaml
+      name: common
+      tasks_from: main.yaml
 
   - name: Copy file 
     ansible.builtin.template:
