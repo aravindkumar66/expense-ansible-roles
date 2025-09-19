@@ -10,26 +10,10 @@
       state: started
       enabled: yes
 
-  - name: Remove default file 
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: absent
-
-  - name: create directroies
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: directory
-
-  - name: Download file from url
-    ansible.builtin.get_url:
-      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-      dest: /tmp/frontend.zip
-
-  - name: Unarchive a file that needs to be downloaded 
-    ansible.builtin.unarchive:
-      src: /tmp/frontend.zip
-      dest: /usr/share/nginx/html
-      remote_src: yes
+  - name: import tasks from common role
+    ansible.builtin.import_role:
+    name: common
+    tasks_from: main.yaml
 
   - name: Copy file 
     ansible.builtin.template:
